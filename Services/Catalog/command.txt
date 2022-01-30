@@ -1,0 +1,42 @@
+﻿#### Pull mongo về : 
+docker pull mongo
+
+#### Detach mode, publish 27017 local -> 27017 docker để chạy chung với máy thật
+#### Tên : plc-mongo, image : mongo
+docker run -d -p 27017:27017 --name plc-mongo mongo
+
+#### Check log, -f:follow (duy trì theo dõi)
+docker logs -f plc-mongo
+
+#### Bật/Tắt Container
+docker start/stop plc-mongo
+
+#### Execute ,Interactive + Terminal
+docker exec -it plc-mongo /bin/bash
+
+#### Thoát exec
+Ctrl+P Ctrl+Q
+
+########################################################################################
+
+#### Vào mongoCLI
+mongo
+
+#### Xem list db/collection:
+show dbs 
+show collections
+
+#### Tạo và chuyển sang 1 db :
+use CatalogDb
+
+#### Tạo collection :
+db.createCollection('Products')
+
+#### Thêm data
+db.Products.insertOne({ 'Name':'iPhone 6s Plus','Category':'Apple', 'Description':'Dien thoai cua toi', 'Image':'ImageFile', 'Price':10.08 })
+
+db.Products.insertMany([{ 'Name':'iPhone 6s Plus','Category':'Apple', 'Description':'Dien thoai cua toi', 'Image':'ImageFile', 'Price':10.08 }, { 'Name':'Xiaomi Redmi Note 4x', 'Category':'Xiaomi', 'Description':'GamingPhone huyen thoai', 'Image':'ImageFile', 'Price':6.9 }])
+
+#### Truy vấn
+db.Products.find({}).pretty()
+db.Products.remove({})
