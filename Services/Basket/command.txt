@@ -1,0 +1,12 @@
+#### Chạy Redis
+docker run -d -p 6379:6379 --name plc-redis redis
+
+#### Execute ,Interactive + Terminal
+docker exec -it plc-redis /bin/bash
+
+#### Vào Redis : 
+redis-cli
+
+#### Set và get giá trị
+set <tên key> <value>
+get <tên key>
