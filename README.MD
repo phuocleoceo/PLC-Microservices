@@ -3,10 +3,10 @@
 # Command : 
 
 ## Compose Up
-docker-compose -f .\docker-compose.yml up -d
+docker-compose up -d
 
 ## Compose Down
-docker-compose -f .\docker-compose.yml down
+docker-compose down
 
 ## Stop/Remove All Container 
 docker stop/rm $(docker ps -aq)
