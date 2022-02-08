@@ -1,4 +1,5 @@
 using Discount.API.Repositories;
+using Discount.API.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,5 +29,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MigrateDatabase<Program>();
 
 app.Run();

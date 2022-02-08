@@ -70,6 +70,20 @@ services:
     volumes:
       - pgadmin_data:/root/.pgadmin
     restart: always
+  ################################################################################
+  discount.api:
+    image: discountapi
+    container_name: discount.api
+    build:
+      context: .
+      dockerfile: Services/Discount/Discount.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "DatabaseSettings:ConnectionString=Server=discountdb;Port=5432;Database=DiscountDb;User Id=admin;Password=admin;"
+    depends_on:
+      - discountdb
+    ports:
+      - "8002:80"
 
 volumes:
   mongo_data:
