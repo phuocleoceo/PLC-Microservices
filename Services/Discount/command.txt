@@ -1,0 +1,19 @@
+PGAdmin : admin@gmail.com / admin
+PostgresServer : DiscountServer
+Database : DiscountDb
+Account : admin / admin
+################ TABLE ##############
+CREATE TABLE Coupon(
+	ID SERIAL PRIMARY KEY NOT NULL,
+	ProductName VARCHAR(24) NOT NULL,
+	Description TEXT,
+	Amount INT
+);
+
+################ DATA SEED ############
+
+INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('iPhone 6s Plus', 'My Phone Discount', 27);
+
+INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Dell Inspiron 5567', 'My Laptop Discount', 69);
+
+INSERT INTO Coupon (ProductName, Description, Amount) VALUES ('Macbook Air M1', 'Mac Discount', 10);
