@@ -27,4 +27,39 @@ public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
         }
         return _mapper.Map<CouponModel>(coupon);
     }
+
+    public override async Task<CouponModel> CreateDiscount(CreateDiscountRequest request, ServerCallContext context)
+    {
+        Coupon coupon = _mapper.Map<Coupon>(request.Coupon);
+        if (await _repository.CreateDiscount(coupon))
+        {
+            _logger.LogInformation($"Discount for {coupon.ProductName} created.");
+            return _mapper.Map<CouponModel>(coupon);
+        }
+        else
+        {
+            throw new RpcException(new Status(StatusCode.InvalidArgument, $"Fail when create discount for {coupon.ProductName}"));
+        }
+    }
+
+    public override async Task<CouponModel> UpdateDiscount(UpdateDiscountRequest request, ServerCallContext context)
+    {
+        Coupon coupon = _mapper.Map<Coupon>(request.Coupon);
+        if (await _repository.UpdateDiscount(coupon))
+        {
+            _logger.LogInformation($"Discount for {coupon.ProductName} updated.");
+            return _mapper.Map<CouponModel>(coupon);
+        }
+        else
+        {
+            throw new RpcException(new Status(StatusCode.InvalidArgument, $"Fail when update discount for {coupon.ProductName}"));
+        }
+    }
+
+    public override async Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
+    {
+        bool deleted = await _repository.DeleteDiscount(request.ProductName);
+        DeleteDiscountResponse response = new DeleteDiscountResponse { Success = deleted };
+        return response;
+    }
 }
