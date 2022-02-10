@@ -61,15 +61,15 @@ public static class HostExtension
 
 
         command.CommandText = @"INSERT INTO Coupon (ProductName, Description, Amount) VALUES
-                                ('iPhone 6s Plus', 'My Phone Discount', 27);";
+                                ('iPhone 6s Plus', 'My Phone Discount', 2);";
         command.ExecuteNonQuery();
 
         command.CommandText = @"INSERT INTO Coupon (ProductName, Description, Amount) VALUES
-                                ('Dell Inspiron 5567', 'My Laptop Discount', 69);";
+                                ('Dell Inspiron 5567', 'My Laptop Discount', 7);";
         command.ExecuteNonQuery();
 
         command.CommandText = @"INSERT INTO Coupon (ProductName, Description, Amount) VALUES
-                                ('Macbook Air M1', 'Mac Discount', 10);";
+                                ('Macbook Air M1', 'Mac Discount', 1);";
         command.ExecuteNonQuery();
     }
 }

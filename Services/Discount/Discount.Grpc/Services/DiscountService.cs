@@ -25,6 +25,7 @@ public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
         {
             throw new RpcException(new Status(StatusCode.NotFound, $"Not found discount for {request.ProductName}"));
         }
+        _logger.LogInformation($"Discount is retrieved for {request.ProductName} : {coupon.Amount}");
         return _mapper.Map<CouponModel>(coupon);
     }
 
