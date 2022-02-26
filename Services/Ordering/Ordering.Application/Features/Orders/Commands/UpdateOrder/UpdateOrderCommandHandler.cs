@@ -1,4 +1,5 @@
 using Ordering.Application.Contracts.Persistence;
+using Ordering.Application.Exceptions;
 using Microsoft.Extensions.Logging;
 using Ordering.Domain.Entities;
 using AutoMapper;
@@ -26,6 +27,7 @@ public class UpdateOrderCommandHandler : IRequestHandler<UpdateOrderCommand>
         if (updateOrder is null)
         {
             _logger.LogError($"Order {request.Id} not exists");
+            throw new NotFoundException(nameof(Order), request.Id);
         }
         // Update by AutoMapper, request thay thế cho updateOrder
         _mapper.Map(request, updateOrder, typeof(UpdateOrderCommand), typeof(Order));
