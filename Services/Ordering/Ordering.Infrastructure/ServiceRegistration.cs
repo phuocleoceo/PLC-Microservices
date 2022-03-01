@@ -16,9 +16,7 @@ public static class ServiceRegistration
                 (this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<OrderContext>(options =>
-        {
-            options.UseSqlServer(configuration.GetConnectionString("OrderCNS"));
-        });
+            options.UseSqlServer(configuration.GetConnectionString("OrderCNS")));
 
         services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
         services.AddScoped<IOrderRepository, OrderRepository>();
