@@ -1,4 +1,6 @@
+using Ordering.Infrastructure.Persistence;
 using Ordering.Infrastructure;
+using Ordering.API.Extensions;
 using Ordering.Application;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,5 +32,11 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MigrateDatabase<OrderContext>((context, services) =>
+{
+    var logger = services.GetService<ILogger<OrderContextSeed>>();
+    OrderContextSeed.SeedAsync(context, logger).Wait();
+});
 
 app.Run();
