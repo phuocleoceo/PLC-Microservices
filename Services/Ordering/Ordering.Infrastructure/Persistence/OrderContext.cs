@@ -34,6 +34,6 @@ public class OrderContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.ApplyConfiguration(new OrderConfiguration());
+        // modelBuilder.ApplyConfiguration(new OrderConfiguration());
     }
 }

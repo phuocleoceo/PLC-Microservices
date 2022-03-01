@@ -1,13 +1,14 @@
 using Ordering.Application.Contracts.Infrastructure;
 using Ordering.Application.Contracts.Persistence;
 using Microsoft.Extensions.DependencyInjection;
+using Ordering.Infrastructure.Repositories;
 using Ordering.Infrastructure.Persistence;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Ordering.Infrastructure.Mail;
 using Ordering.Application.Models;
 
-namespace Ordering.Infrastructure.Repositories;
+namespace Ordering.Infrastructure;
 
 public static class ServiceRegistration
 {

@@ -1,9 +1,10 @@
-using Ordering.Infrastructure.Repositories;
+using Ordering.Infrastructure;
+using Ordering.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureService(builder.Configuration);
 
 builder.Services.AddControllers();
