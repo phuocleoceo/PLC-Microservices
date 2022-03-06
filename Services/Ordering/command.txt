@@ -1,5 +1,7 @@
-# Database Migration
-dotnet ef migrations add {MigrationName}
+# Database Migration (cd to Ordering.API)
+dotnet ef migrations add Init --project ../Ordering.Infrastructure
+
+# Update for test (not necessary for Docker-Compose)
 dotnet ef database update
 
 # Run test SQL Server
